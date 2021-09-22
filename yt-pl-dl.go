@@ -14,6 +14,7 @@ import (
 var dlArgs = []string{"--yes-playlist", "--extract-audio", "--audio-format", "mp3"}
 
 const fsMode = 0770
+const ytHashOffset = 12
 
 type flags struct {
 	url    string
@@ -81,8 +82,8 @@ func fixFileNames(fileNames []string) ([]string, error) {
 	for _, fileName := range fileNames {
 		typeSplit := strings.Split(fileName, ".")
 		fileType := typeSplit[len(typeSplit)-1]
-		fixSplit := strings.Split(typeSplit[0], "-")
-		fixedFileName := strings.Join(fixSplit[0:len(fixSplit)-1], " ")
+		fixSplit := strings.Split(typeSplit[0], "")
+		fixedFileName := strings.Join(fixSplit[0:len(fixSplit)-ytHashOffset], "")
 		fixedFullFileName := fmt.Sprintf("%s.%s", fixedFileName, fileType)
 		fixedFileNames = append(fixedFileNames, fixedFullFileName)
 
