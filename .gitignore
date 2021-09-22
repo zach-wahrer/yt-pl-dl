@@ -11,5 +11,8 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+*.mp3
+*.m4a
+*.m4a.part
 # Dependency directories (remove the comment below to include it)
 # vendor/
